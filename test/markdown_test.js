@@ -45,7 +45,11 @@ exports['markdown'] = {
     options = {
       preCompile: noop,
       postCompile: noop,
-      templateContext: {}
+      templateContext: {},
+      markdownOptions: {
+        gfm: true,
+        highlight: 'manual'
+      }
     };
     template = defaultTemplate;
     file = defaultFile;
@@ -112,9 +116,9 @@ exports['markdown'] = {
     file = grunt.file.read('test/data/titletest.md');
 
     options.preCompile = function(src, context) {
-      var matcher = src.match(/@-title:\s?([^@:\n]+)\n/i);
+      var matcher = src.match(/@-title:\s?([^@:\n]+)\r\n/i);
       context.title = matcher && matcher.length > 1 && matcher[1];
-      matcher = src.match(/@-description:\s?([^@:\n]+)\n/i);
+      matcher = src.match(/@-description:\s?([^@:\n]+)\r\n/i);
       context.description = matcher && matcher.length > 1 && matcher[1];
     };
     getjQuery();
