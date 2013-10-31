@@ -116,9 +116,9 @@ exports['markdown'] = {
     file = grunt.file.read('test/data/titletest.md');
 
     options.preCompile = function(src, context) {
-      var matcher = src.match(/@-title:\s?([^@:\n]+)\r\n/i);
+      var matcher = src.match(/@-title:\s?(.*)\r?\n/i);
       context.title = matcher && matcher.length > 1 && matcher[1];
-      matcher = src.match(/@-description:\s?([^@:\n]+)\r\n/i);
+      matcher = src.match(/@-description:\s?(.*)\r?\n/i);
       context.description = matcher && matcher.length > 1 && matcher[1];
     };
     getjQuery();
