@@ -34,8 +34,8 @@ exports.init = function(grunt) {
       return out.join('\n');
     }
 
-    if(typeof options.highlight === 'string') {
-      if(options.highlight === 'auto') {
+    if(typeof options.markdownOptions.highlight === 'string') {
+      if(options.markdownOptions.highlight === 'auto') {
         options.highlight = function(code) {
           var out = hljs.highlightAuto(code).value;
           if(shouldWrap) {
@@ -43,8 +43,8 @@ exports.init = function(grunt) {
           }
           return out;
         };
-      } else if (options.highlight === 'manual') {
-        options.highlight = function(code, lang) {
+      } else if (options.markdownOptions.highlight === 'manual') {
+        options.markdownOptions.highlight = function(code, lang) {
           var out = code;
           try {
             out = hljs.highlight(lang, code).value;
